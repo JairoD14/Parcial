@@ -1,0 +1,50 @@
+class PresupuestoItem:
+    def __init__(self, nombre, descripcion, monto):
+        self.nombre = nombre
+        self.descripcion = descripcion
+        self.monto = monto
+
+    def __str__(self):
+        return f"Nombre: {self.nombre}\nDescripción: {self.descripcion}\nMonto: {self.monto}"
+
+def agregar_item_presupuesto(presupuesto, nombre, descripcion, monto):
+    nuevo_item = PresupuestoItem(nombre, descripcion, monto)
+    presupuesto.append(nuevo_item)
+    print("¡Artículo agregado al presupuesto!")
+
+def buscar_item_presupuesto(presupuesto, nombre):
+    for item in presupuesto:
+        if item.nombre == nombre:
+            return item
+    print("Artículo no encontrado.")
+    return None
+
+def editar_item_presupuesto(presupuesto, nombre, nuevo_nombre=None, nueva_descripcion=None, nuevo_monto=None):
+    item = buscar_item_presupuesto(presupuesto, nombre)
+    if item:
+        if nuevo_nombre:
+            item.nombre = nuevo_nombre
+        if nueva_descripcion:
+            item.descripcion = nueva_descripcion
+        if nuevo_monto:
+            item.monto = nuevo_monto
+        print("¡Artículo editado correctamente!")
+    else:
+        print("No se pudo encontrar el artículo para editar.")
+
+def eliminar_item_presupuesto(presupuesto, nombre):
+    item = buscar_item_presupuesto(presupuesto, nombre)
+    if item:
+        presupuesto.remove(item)
+        print("¡Artículo eliminado del presupuesto!")
+    else:
+        print("No se pudo encontrar el artículo para eliminar.")
+
+
+# Imprimir todos los artículos del presupuesto
+for item in presupuesto:
+    print(item)
+
+
+
+
